@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class SearchResultItem extends StatelessWidget {
+class ListItem extends StatelessWidget {
   final String title;
   final String location;
   final String dateTime;
@@ -9,7 +9,7 @@ class SearchResultItem extends StatelessWidget {
   final bool isFavorite;
   final VoidCallback onTap;
 
-  const SearchResultItem(
+  const ListItem(
       {Key? key,
       required this.title,
       required this.location,
@@ -44,7 +44,7 @@ class SearchResultItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (!isFavorite)
+                if (isFavorite)
                   const Icon(
                     Icons.favorite,
                     color: Colors.red,

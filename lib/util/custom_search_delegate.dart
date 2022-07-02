@@ -3,8 +3,8 @@ import 'package:get_it/get_it.dart';
 import 'package:seat_geek_browser/models/event.dart';
 
 import '../blocs/seat_geek_bloc.dart';
-import '../ui/search_item_details_screen.dart';
-import '../ui/search_result_item.dart';
+import '../ui/item_details_screen.dart';
+import '../ui/list_item.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   final SeatGeekBloc _seatGeekBloc = GetIt.I<SeatGeekBloc>();
@@ -52,21 +52,25 @@ class CustomSearchDelegate extends SearchDelegate {
                   String dateTime = _seatGeekBloc.getFormattedDateTime(result[index].dateTime);
                   String location = result[index].venue.displayLocation;
                   String imageUrl = result[index].performers.first.image;
+                  bool isFavorite = _seatGeekBloc.getSavedEvent(result[index].eventId) != null;
+                  int eventId = result[index].eventId;
 
-                  return SearchResultItem(
+                  return ListItem(
                     title: title,
                     dateTime: dateTime,
                     location: location,
                     imageUrl: imageUrl,
+                    isFavorite: isFavorite,
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SearchItemDetailsScreen(
+                              builder: (context) => ItemDetailsScreen(
                                     title: title,
                                     dateTime: dateTime,
                                     location: location,
                                     imageUrl: imageUrl,
+                                    eventId: eventId,
                                   )));
                     },
                   );

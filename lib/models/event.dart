@@ -19,7 +19,7 @@ class Event {
   Event.fromJson(Map<String, dynamic> json) {
     eventId = json['id'];
     title = json['title'];
-    dateTime = json['datetime_utc'];
+    dateTime = json['datetime_local'];
     venue = Venue.fromJson(json['venue']);
     performers = List<Performer>.from(json['performers']?.map((model) => Performer.fromJson(model)));
   }
