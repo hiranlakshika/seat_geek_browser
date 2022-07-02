@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:seat_geek_browser/models/event.dart';
 
+import '../app_router.dart';
 import '../blocs/seat_geek_bloc.dart';
-import '../ui/item_details_screen.dart';
 import '../ui/list_item.dart';
+import 'navigation_utils.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   final SeatGeekBloc _seatGeekBloc = GetIt.I<SeatGeekBloc>();
@@ -61,18 +62,13 @@ class CustomSearchDelegate extends SearchDelegate {
                     location: location,
                     imageUrl: imageUrl,
                     isFavorite: isFavorite,
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ItemDetailsScreen(
-                                    title: title,
-                                    dateTime: dateTime,
-                                    location: location,
-                                    imageUrl: imageUrl,
-                                    eventId: eventId,
-                                  )));
-                    },
+                    onTap: () => GetIt.I<NavigationUtils>().pushNamed(AppRouter.itemDetailsPage, arguments: {
+                      'title': title,
+                      'dateTime': dateTime,
+                      'location': location,
+                      'imageUrl': imageUrl,
+                      'eventId': eventId,
+                    }),
                   );
                 },
               ),

@@ -1,9 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
+import 'app_router.dart';
 import 'dependencies_locator.dart';
 import 'models/objectbox/object_box.dart';
 import 'ui/home.dart';
+import 'util/navigation_utils.dart';
 
 /// Provides access to the ObjectBox Store throughout the app.
 late ObjectBox objectbox;
@@ -30,6 +33,9 @@ class MyApp extends StatelessWidget {
       ),
       home: HomePage(),
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: AppRouter.generateRoute,
+      initialRoute: AppRouter.home,
+      navigatorKey: GetIt.I<NavigationUtils>().navigatorKey,
     );
   }
 }

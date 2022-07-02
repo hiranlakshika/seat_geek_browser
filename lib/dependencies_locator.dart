@@ -5,6 +5,7 @@ import 'repository/seat_geek_repository.dart';
 
 import 'resources/remote_config_provider.dart';
 import 'resources/seat_geek_api_provider.dart';
+import 'util/navigation_utils.dart';
 
 injectDependencies() {
   //Api Provider
@@ -19,4 +20,5 @@ injectDependencies() {
   GetIt.I.registerLazySingleton(() => SeatGeekBloc());
 
   // Navigation Utils
+  GetIt.I.registerLazySingleton(() => NavigationUtils());
 }

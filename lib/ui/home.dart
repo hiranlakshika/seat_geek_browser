@@ -2,10 +2,11 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
+import '../app_router.dart';
 import '../blocs/seat_geek_bloc.dart';
 import '../models/objectbox/favorite_event.dart';
 import '../util/custom_search_delegate.dart';
-import 'item_details_screen.dart';
+import '../util/navigation_utils.dart';
 import 'list_item.dart';
 
 class HomePage extends StatelessWidget {
@@ -68,18 +69,13 @@ class HomePage extends StatelessWidget {
                           dateTime: dateTime,
                           location: location,
                           imageUrl: imageUrl,
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ItemDetailsScreen(
-                                          title: title,
-                                          dateTime: dateTime,
-                                          location: location,
-                                          imageUrl: imageUrl,
-                                          eventId: eventId,
-                                        )));
-                          },
+                          onTap: () => GetIt.I<NavigationUtils>().pushNamed(AppRouter.itemDetailsPage, arguments: {
+                            'title': title,
+                            'dateTime': dateTime,
+                            'location': location,
+                            'imageUrl': imageUrl,
+                            'eventId': eventId,
+                          }),
                         );
                       },
                     ),
