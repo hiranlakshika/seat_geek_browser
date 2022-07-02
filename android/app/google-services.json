@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1010305674348",
+    "project_id": "seat-geek-browser",
+    "storage_bucket": "seat-geek-browser.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010305674348:android:b7c7aee2c2c3dcce857c49",
+        "android_client_info": {
+          "package_name": "com.digital14.seat_geek_browser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010305674348-jpe6figose32q8e0sajvv70tos3khlri.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9YXya7pAceMKvQBcy2EVm0snkCUUEJ0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010305674348-jpe6figose32q8e0sajvv70tos3khlri.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
