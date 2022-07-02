@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:seat_geek_browser/models/event.dart';
 
 import '../blocs/seat_geek_bloc.dart';
+import '../ui/search_item_details_screen.dart';
 import '../ui/search_result_item.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
@@ -47,12 +48,27 @@ class CustomSearchDelegate extends SearchDelegate {
               child: ListView.builder(
                 itemCount: snapshot.data?.length,
                 itemBuilder: (context, index) {
+                  String title = result[index].title;
+                  String dateTime = _seatGeekBloc.getFormattedDateTime(result[index].dateTime);
+                  String location = result[index].venue.displayLocation;
+                  String imageUrl = result[index].performers.first.image;
+
                   return SearchResultItem(
-                    title: result[index].title,
-                    dateTime: _seatGeekBloc.getFormattedDateTime(result[index].dateTime),
-                    location: result[index].venue.displayLocation,
-                    imageUrl: result[index].performers.first.image,
-                    onTap: () {},
+                    title: title,
+                    dateTime: dateTime,
+                    location: location,
+                    imageUrl: imageUrl,
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SearchItemDetailsScreen(
+                                    title: title,
+                                    dateTime: dateTime,
+                                    location: location,
+                                    imageUrl: imageUrl,
+                                  )));
+                    },
                   );
                 },
               ),
